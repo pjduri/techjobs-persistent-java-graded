@@ -18,12 +18,12 @@ public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
 
-    @GetMapping("")
+    @GetMapping
     public String index(Model model) {
         Iterable<Employer> employers = employerRepository.findAll();
         model.addAttribute("title", "All Employers");
         model.addAttribute("employers", employers);
-        return "employers";
+        return "employers/index";
     }
 
     @GetMapping("add")
@@ -39,6 +39,7 @@ public class EmployerController {
                                          Model model) {
 
         if (errors.hasErrors()) {
+            model.addAttribute("title", "Add Employer");
             return "employers/add";
         }
 

@@ -3,7 +3,25 @@ package org.launchcode.techjobs.persistent.models;
 import javax.persistence.*;
 
 @Entity
-public class Job extends AbstractEntity {
+public class Job {
+
+    @Id
+    @GeneratedValue
+    private int id;
+
+    private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     private String employer;
     private String skills;
