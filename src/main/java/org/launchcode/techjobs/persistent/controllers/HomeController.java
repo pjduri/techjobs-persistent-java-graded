@@ -23,13 +23,13 @@ import java.util.Optional;
 public class HomeController {
 
     @Autowired
-    JobRepository jobRepository;
+    private JobRepository jobRepository;
 
     @Autowired
-    EmployerRepository employerRepository;
+    private EmployerRepository employerRepository;
 
     @Autowired
-    SkillRepository skillRepository;
+    private SkillRepository skillRepository;
 
     @RequestMapping("")
     public String index(Model model) {
