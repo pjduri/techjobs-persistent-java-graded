@@ -1,7 +1,9 @@
 package org.launchcode.techjobs.persistent.controllers;
 
+import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.Job;
 import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
+import org.launchcode.techjobs.persistent.models.data.JobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,12 +12,16 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by LaunchCode
  */
 @Controller
 public class HomeController {
+
+    @Autowired
+    JobRepository jobRepository;
 
     @Autowired
     EmployerRepository employerRepository;
@@ -49,6 +55,9 @@ public class HomeController {
             model.addAttribute("employers", employerRepository.findAll());
             return "add";
         }
+        Optional<Employer> employer = employerRepository.findById(employerId);
+        newJob.setEmployer(employer.get());
+        jobRepository.save(newJob);
 
 
         return "redirect:";
