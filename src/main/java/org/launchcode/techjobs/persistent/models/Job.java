@@ -3,13 +3,25 @@ package org.launchcode.techjobs.persistent.models;
 import javax.persistence.*;
 
 @Entity
-public class Job{
+public class Job {
 
     @Id
     @GeneratedValue
     private int id;
 
     private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     private String employer;
     private String skills;
@@ -24,15 +36,6 @@ public class Job{
     }
 
     // Getters and setters.
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getEmployer() {
         return employer;
     }
@@ -48,4 +51,5 @@ public class Job{
     public void setSkills(String skills) {
         this.skills = skills;
     }
+
 }
